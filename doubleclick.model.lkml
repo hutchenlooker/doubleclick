@@ -1,4 +1,4 @@
-connection: "doubleclick"
+connection: "bigquery_poc_admin"
 
 # include all the views
 include: "*.view"

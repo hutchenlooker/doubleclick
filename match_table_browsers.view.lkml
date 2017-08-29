@@ -1,5 +1,5 @@
 view: match_table_browsers {
-  sql_table_name: (select * from `ekoblov-test.dcm1684.match_table_browsers_1684` where _LATEST_DATE = _DATA_DATE)
+  sql_table_name: (select * from `canada-poc17000083.Doubleclick.match_table_browsers_226602` where _LATEST_DATE = _DATA_DATE)
     ;;
 
   dimension: browser_platform {

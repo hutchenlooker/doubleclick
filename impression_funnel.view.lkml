@@ -8,8 +8,6 @@ view: impression_funnel {
                   , first_activity
                   , latest_activity
                   , count_conversions
-                  , count_postview_conversions
-                  , count_postclick_conversions
                   , revenue
             from
             (select user_id
@@ -23,7 +21,7 @@ view: impression_funnel {
                 , max(event_time) as latest_impression
                 , count(distinct site_id_dcm) as site_count
                 , count(*) as count_impressions
-            from `ekoblov-test.dcm1684.impression_1684`
+            from `canada-poc17000083.Doubleclick.impression_226602`
             where user_id <> '' and user_id is not null
             group by 1,2,3,4) as user_impression_metrics
 
@@ -36,7 +34,7 @@ view: impression_funnel {
                 , min(event_time) as first_click
                 , max(event_time) as latest_click
                 , count(*) as count_clicks
-            from `ekoblov-test.dcm1684.click_1684`
+            from `canada-poc17000083.Doubleclick.click_226602`
             where user_id <> '' and user_id is not null
             group by 1,2,3,4) as user_click_metrics
 
@@ -45,22 +43,19 @@ view: impression_funnel {
             and user_impression_metrics.ad_id = user_click_metrics.ad_id
             and user_impression_metrics.advertiser_id = user_click_metrics.advertiser_id
 
-
             left join
 
-            (select  user_id
+        (select  user_id
                 , campaign_id
                 , ad_id
                 , advertiser_id
                 , min(event_time) as first_activity
                 , max(event_time) as latest_activity
                 , count(*) as count_conversions
-                , sum(case when event_sub_type = 'POSTVIEW' THEN 1 ELSE 0 END) as count_postview_conversions
-                , sum(case when event_sub_type = 'POSTCLICK' THEN 1 ELSE 0 END) as count_postclick_conversions
+                , sum(total_conversions) as conversions
                 , sum(total_revenue) as revenue
-                from `ekoblov-test.dcm1684.activity_1684`
+                from `canada-poc17000083.Doubleclick.activity_226602`
                 where user_id <> '' and user_id is not null
-                and event_type = 'CONVERSION'
                 group by 1,2,3,4) as user_activity_metrics
             on user_impression_metrics.user_id = user_activity_metrics.user_id
             and user_impression_metrics.campaign_id = user_activity_metrics.campaign_id
@@ -68,6 +63,8 @@ view: impression_funnel {
             and user_impression_metrics.advertiser_id = user_activity_metrics.advertiser_id
  ;;
   }
+
+
 
   dimension: zip_code {
     type: zipcode
@@ -192,15 +189,15 @@ view: impression_funnel {
     sql: ${TABLE}.count_conversions ;;
   }
 
-  dimension: count_postview_conversions {
-    type: number
-    sql: ${TABLE}.count_postview_conversions ;;
-  }
+  # dimension: count_postview_conversions {
+  #   type: number
+  #   sql: ${TABLE}.count_postview_conversions ;;
+  # }
 
-  dimension: count_postclick_conversions {
-    type: number
-    sql: ${TABLE}.count_postclick_conversions ;;
-  }
+  # dimension: count_postclick_conversions {
+  #   type: number
+  #   sql: ${TABLE}.count_postclick_conversions ;;
+  # }
 
   dimension: revenue {
     type: number
@@ -223,15 +220,15 @@ view: impression_funnel {
     sql: ${count_conversions} ;;
   }
 
-  measure: total_post_view_conversions {
-    type: sum
-    sql: ${count_postview_conversions} ;;
-  }
+  # measure: total_post_view_conversions {
+  #   type: sum
+  #   sql: ${count_postview_conversions} ;;
+  # }
 
-  measure: total_post_click_conversions {
-    type: sum
-    sql: ${count_postclick_conversions} ;;
-  }
+  # measure: total_post_click_conversions {
+  #   type: sum
+  #   sql: ${count_postclick_conversions} ;;
+  # }
 
   measure: count_users {
     type: count_distinct
@@ -279,7 +276,7 @@ view: impression_funnel {
 
   measure: conversion_rate {
     type: number
-    sql: ${total_post_click_conversions}/NULLIF(${total_clicks},0) ;;
+    sql: ${total_conversions}/NULLIF(${total_clicks},0) ;;
     value_format_name: percent_2
     description: "Total Post Click Conversions/Total Clicks"
   }
@@ -298,6 +295,6 @@ view: impression_funnel {
   }
 
   set: detail {
-    fields: [user_id, campaign_id, ad_id, advertiser_id, creative_version, site_count, count_impressions, count_clicks, count_conversions, total_conversions, revenue]
+    fields: [user_id, campaign_id, ad_id, advertiser_id, creative_version, site_count, count_impressions, count_clicks, revenue]
   }
 }

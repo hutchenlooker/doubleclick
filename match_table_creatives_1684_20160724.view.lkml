@@ -1,5 +1,5 @@
 view: match_table_creatives_1684_20160724 {
-  sql_table_name: dcm1684.match_table_creatives_1684_20160724 ;;
+  sql_table_name: `canada-poc17000083.Doubleclick.match_table_creatives_226602` ;;
 
   dimension: advertiser_id {
     type: string

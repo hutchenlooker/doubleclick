@@ -1,5 +1,5 @@
 view: activity {
-  sql_table_name: `ekoblov-test.dcm1684.activity_1684`
+  sql_table_name: `canada-poc17000083.Doubleclick.activity_226602`
     ;;
 
   dimension_group: activity {
@@ -9,7 +9,7 @@ view: activity {
 
   dimension: pk {
     type: string
-    sql: concat(${activity_id}, ${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${event_type}, ${rendering_id}) ;;
+    sql: concat(${activity_id}, ${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${rendering_id}) ;;
   }
 
   #     hidden: true
@@ -449,10 +449,10 @@ view: activity {
     sql: ${TABLE}.DBM_ZIP_Postal_Code ;;
   }
 
-  dimension: event_sub_type {
-    type: string
-    sql: ${TABLE}.Event_Sub_Type ;;
-  }
+#   dimension: event_sub_type {
+#     type: string
+#     sql: ${TABLE}.Event_Sub_Type ;;
+#   }
 
   dimension_group: event {
     type: time
@@ -460,10 +460,10 @@ view: activity {
     sql: ${TABLE}.Event_Time/1000000 ;;
   }
 
-  dimension: event_type {
-    type: string
-    sql: ${TABLE}.Event_Type ;;
-  }
+#   dimension: event_type {
+#     type: string
+#     sql: ${TABLE}.Event_Type ;;
+#   }
 
   dimension: floodlight_configuration {
     type: string

@@ -1,5 +1,5 @@
 view: click {
-  sql_table_name: `ekoblov-test.dcm1684.click_1684`
+  sql_table_name: `canada-poc17000083.Doubleclick.click_226602`
     ;;
 
   dimension_group: click {

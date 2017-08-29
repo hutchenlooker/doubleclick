@@ -1,5 +1,5 @@
 view: impression {
-  sql_table_name: `ekoblov-test.dcm1684.impression_1684`
+  sql_table_name: `canada-poc17000083.Doubleclick.impression_226602`
     ;;
 
   dimension: block_name {
@@ -24,7 +24,7 @@ view: impression {
 
   dimension: pk {
     type: string
-    sql: concat(${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${event_type}, ${rendering_id}) ;;
+    sql: concat(${ad_id}, ${advertiser_id}, ${user_id}, cast(${TABLE}.Event_Time as string), ${rendering_id}) ;;
     hidden: yes
   }
 
