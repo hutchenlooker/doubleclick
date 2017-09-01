@@ -73,13 +73,18 @@ view: impression_funnel {
   }
 
   dimension: state_region {
-    map_layer_name: states_and_provinces
     sql: ${TABLE}.state_region ;;
   }
 
   dimension: country_code {
     map_layer_name: countries
     sql: ${TABLE}.country_code ;;
+  }
+
+  dimension: country_state_region {
+    description: "Use for State maps of both countries"
+    map_layer_name: states_and_provinces
+    sql: concat(${country_code}, '.',${TABLE}.State_Region) ;;
   }
 
   dimension: user_id {

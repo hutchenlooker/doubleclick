@@ -494,6 +494,12 @@ view: click {
     sql: ${TABLE}.State_Region ;;
   }
 
+  dimension: country_state_region {
+    description: "Use for State maps of both countries"
+    map_layer_name: states_and_provinces
+    sql: concat(${country_code}, '.',${TABLE}.State_Region) ;;
+  }
+
   dimension: u_value {
     type: string
     sql: ${TABLE}.U_Value ;;

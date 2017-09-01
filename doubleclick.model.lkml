@@ -139,10 +139,13 @@ explore: click {
   }
 }
 
-map_layer: canada_fsa {
-  file: "gfsa000a11a_e.topojson.json"
-#   property_key: "canada_fsa"
-}
+
+####### CUSTOM MAP LAYERS #################
+
+# map_layer: canada_fsa {
+#   file: "gfsa000a11a_e.topojson.json"
+# #   property_key: "canada_fsa"
+# }
 
 map_layer: states_and_provinces {
   file: "states_and_provinces.topojson"
