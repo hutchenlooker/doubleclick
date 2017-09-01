@@ -139,6 +139,19 @@ explore: click {
   }
 }
 
+map_layer: canada_fsa {
+  file: "gfsa000a11a_e.topojson.json"
+#   property_key: "canada_fsa"
+}
+
+map_layer: states_and_provinces {
+  file: "states_and_provinces.topojson"
+#   property_key: "states_and_provinces"
+}
+
+
+
+
 # - explore: campaign_date_table
 #   always_filter:
 #     campaign_date_table.calendar_date: 7 days

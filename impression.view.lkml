@@ -448,6 +448,7 @@ view: impression {
 
   dimension: dbm_state_region_id {
     type: string
+    map_layer_name: states_and_provinces
     sql: ${TABLE}.DBM_State_Region_ID ;;
   }
 
@@ -478,6 +479,7 @@ view: impression {
 
   dimension: dbm_zip_postal_code {
     type: string
+#     map_layer_name: canada_fsa
     sql: ${TABLE}.DBM_ZIP_Postal_Code ;;
   }
 
@@ -533,8 +535,13 @@ view: impression {
   }
 
   dimension: state_region {
-    map_layer_name: us_states
+    map_layer_name: states_and_provinces
     sql: ${TABLE}.State_Region ;;
+  }
+
+  dimension: country_state_region {
+    map_layer_name: states_and_provinces
+    sql: concat(${country_code}, '.',${TABLE}.State_Region) ;;
   }
 
   dimension: u_value {
@@ -549,6 +556,7 @@ view: impression {
 
   dimension: zip_postal_code {
     type: zipcode
+#     map_layer_name: canada_fsa
     sql: ${TABLE}.ZIP_Postal_Code ;;
   }
 

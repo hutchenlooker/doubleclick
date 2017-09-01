@@ -429,6 +429,7 @@ view: click {
 
   dimension: dbm_zip_postal_code {
     type: string
+#     map_layer_name: canada_fsa
     sql: ${TABLE}.DBM_ZIP_Postal_Code ;;
   }
 
@@ -505,6 +506,7 @@ view: click {
 
   dimension: zip_postal_code {
     type: string
+#     map_layer_name: canada_fsa
     sql: ${TABLE}.ZIP_Postal_Code ;;
   }
 

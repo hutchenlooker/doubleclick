@@ -68,11 +68,12 @@ view: impression_funnel {
 
   dimension: zip_code {
     type: zipcode
+#     map_layer_name: canada_fsa
     sql: ${TABLE}.zip_code ;;
   }
 
   dimension: state_region {
-    map_layer_name: us_states
+    map_layer_name: states_and_provinces
     sql: ${TABLE}.state_region ;;
   }
 
