@@ -277,6 +277,7 @@ view: impression_funnel {
 
   measure: total_revenue {
     type: sum
+    value_format_name: usd
     sql: ${revenue} ;;
   }
 

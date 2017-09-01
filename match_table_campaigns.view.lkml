@@ -37,4 +37,16 @@ view: match_table_campaigns {
     timeframes: [date, week, month, year]
     sql: ${TABLE}.Campaign_Start_Date ;;
   }
+
+  dimension_group: today {
+    type: time
+    timeframes: [raw, date]
+    sql: current_date() ;;
+  }
+
+  dimension: is_active {
+    type: yesno
+    sql: ${today_date} between ${campaign_start_date} and ${campaign_end_date} ;;
+  }
+
 }
