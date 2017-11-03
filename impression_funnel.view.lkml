@@ -1,6 +1,6 @@
 view: impression_funnel {
   derived_table: {
-    sql_trigger_value: SELECT CURRENT_DATE() ;;
+#     sql_trigger_value: SELECT CURRENT_DATE() ;;
     sql: select user_impression_metrics.*
                   , first_click
                   , latest_click
@@ -21,7 +21,7 @@ view: impression_funnel {
                 , max(event_time) as latest_impression
                 , count(distinct site_id_dcm) as site_count
                 , count(*) as count_impressions
-            from `canada-poc17000083.Doubleclick.impression_226602`
+            from `ca-pr-mrk.Doubleclick.impression_226602`
             where user_id <> '' and user_id is not null
             group by 1,2,3,4) as user_impression_metrics
 
@@ -34,7 +34,7 @@ view: impression_funnel {
                 , min(event_time) as first_click
                 , max(event_time) as latest_click
                 , count(*) as count_clicks
-            from `canada-poc17000083.Doubleclick.click_226602`
+            from `ca-pr-mrk.Doubleclick.click_226602`
             where user_id <> '' and user_id is not null
             group by 1,2,3,4) as user_click_metrics
 
@@ -54,7 +54,7 @@ view: impression_funnel {
                 , count(*) as count_conversions
                 , sum(total_conversions) as conversions
                 , sum(total_revenue) as revenue
-                from `canada-poc17000083.Doubleclick.activity_226602`
+                from `ca-pr-mrk.Doubleclick.activity_226602`
                 where user_id <> '' and user_id is not null
                 group by 1,2,3,4) as user_activity_metrics
             on user_impression_metrics.user_id = user_activity_metrics.user_id

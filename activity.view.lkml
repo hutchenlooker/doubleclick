@@ -1,5 +1,5 @@
 view: activity {
-  sql_table_name: `canada-poc17000083.Doubleclick.activity_226602`
+  sql_table_name: `ca-pr-mrk.Doubleclick.activity_226602`
     ;;
 
   dimension_group: activity {

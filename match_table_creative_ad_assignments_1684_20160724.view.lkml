@@ -1,5 +1,5 @@
 view: match_table_creative_ad_assignments_1684_20160724 {
-  sql_table_name: `canada-poc17000083.Doubleclick.match_table_creative_ad_assignments_226602` ;;
+  sql_table_name: `ca-pr-mrk.Doubleclick.match_table_creative_ad_assignments_226602` ;;
 
   dimension: ad_click_url {
     type: string

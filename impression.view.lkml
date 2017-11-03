@@ -1,5 +1,5 @@
 view: impression {
-  sql_table_name: `canada-poc17000083.Doubleclick.impression_226602`
+  sql_table_name: `ca-pr-mrk.Doubleclick.impression_226602`
     ;;
 
   dimension: block_name {

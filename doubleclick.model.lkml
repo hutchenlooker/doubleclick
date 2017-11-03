@@ -1,4 +1,4 @@
-connection: "bigquery_poc_admin"
+connection: "bigquer_mrk_admin"
 
 # include all the views
 include: "*.view"
