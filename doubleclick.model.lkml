@@ -8,6 +8,8 @@ include: "*.dashboard"
 
 persist_for: "24 hours"
 
+label: "3) Doubleclick"
+
 explore: impression {
   label: "Impressions"
   view_label: "Impressions"
